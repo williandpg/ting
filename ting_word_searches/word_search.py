@@ -1,13 +1,12 @@
 def exists_word(word, instance):
     """Aqui irá sua implementação"""
-    word = word.lower()
     word_list = []
 
     for i in instance.queue:
         file_name = i["nome_arquivo"]
         word_data = []
         for idx, line in enumerate(i["linhas_do_arquivo"], start=1):
-            if word in line.lower():
+            if word.lower() in line.lower():
                 word_data.append({"linha": idx})
 
         if word_data:
