@@ -19,5 +19,6 @@ def exists_word(word, instance):
 
     return word_list
 
+
 def search_by_word(word, instance):
     """Aqui irá sua implementação"""
