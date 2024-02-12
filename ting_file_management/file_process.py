@@ -1,40 +1,10 @@
-from .file_management import txt_importer
-import sys
-
-
 def process(path_file, instance):
     """Aqui irá sua implementação"""
-    for file in instance._data:
-        if file["nome_do_arquivo"] == path_file:
-            return
-
-    data = txt_importer(path_file)
-    if data is not None:
-        file_data = {
-            "nome_do_arquivo": path_file,
-            "qtd_linhas": len(data),
-            "linhas_do_arquivo": data
-        }
-
-        instance.enqueue(file_data)
-
-        print(file_data)
 
 
 def remove(instance):
     """Aqui irá sua implementação"""
-    if len(instance) == 0:
-        print("Não há elementos")
-        return
-
-    file = instance.dequeue()
-    print(f"Arquivo {file['nome_do_arquivo']} removido com sucesso")
 
 
 def file_metadata(instance, position):
     """Aqui irá sua implementação"""
-    try:
-        file_data = instance.search(position)
-        print(file_data)
-    except IndexError:
-        print("Posição inválida", file=sys.stderr)
