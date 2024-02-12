@@ -1,4 +1,5 @@
 from .file_management import txt_importer
+import sys
 
 
 def process(path_file, instance):
@@ -22,13 +23,18 @@ def process(path_file, instance):
 def remove(instance):
     """Aqui irá sua implementação"""
     if len(instance) == 0:
-        print("Fila vazia")
+        print("Não há elementos")
         return
 
     file = instance.dequeue()
-    print(f"Arquivo {file['nome_do_arquivo']} removido da fila")
+    print(f"Arquivo {file['nome_do_arquivo']} removido com sucesso")
     return file
 
 
 def file_metadata(instance, position):
     """Aqui irá sua implementação"""
+    try:
+        file_data = instance.search(position)
+        print(file_data)
+    except IndexError as error:
+        print(str(error), file=sys.stderr)
