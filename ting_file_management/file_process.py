@@ -4,8 +4,8 @@ from .file_management import txt_importer
 def process(path_file, instance):
     """Aqui irá sua implementação"""
     for file in instance._queue:
-            if file["nome_do_arquivo"] == path_file:
-                return
+        if file["nome_do_arquivo"] == path_file:
+            return
 
     data = txt_importer(path_file)
     if data is not None:
@@ -18,7 +18,7 @@ def process(path_file, instance):
     instance.enqueue(file_data)
 
     print(file_data)
-    
+ 
 
 def remove(instance):
     """Aqui irá sua implementação"""
