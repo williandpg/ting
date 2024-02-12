@@ -4,9 +4,8 @@ import sys
 
 def process(path_file, instance):
     """Aqui irá sua implementação"""
-    for file in instance._items:
+    for file in instance._data:
         if file["nome_do_arquivo"] == path_file:
-            print(f"Arquivo {path_file} já processado")
             return
 
     data = txt_importer(path_file)
@@ -16,7 +15,9 @@ def process(path_file, instance):
             "qtd_linhas": len(data),
             "linhas_do_arquivo": data
         }
+
         instance.enqueue(file_data)
+
         print(file_data)
 
 
@@ -28,7 +29,6 @@ def remove(instance):
 
     file = instance.dequeue()
     print(f"Arquivo {file['nome_do_arquivo']} removido com sucesso")
-    return file
 
 
 def file_metadata(instance, position):
@@ -36,5 +36,5 @@ def file_metadata(instance, position):
     try:
         file_data = instance.search(position)
         print(file_data)
-    except IndexError as error:
-        print(str(error), file=sys.stderr)
+    except IndexError:
+        print("Posição inválida", file=sys.stderr)
